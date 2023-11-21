@@ -9,7 +9,7 @@ function Dashboardfreelancer() {
       <Header />
       <h1>Welcome to the Freelancer Dashboard</h1>
       <Link to="/jobs">Go to Jobs</Link>
-      <Link to="/cvbuilder">CV Builder</Link>
+      <Link to="/Multistepcvbuilder">CV Builder</Link>
     </div>
   );
 }

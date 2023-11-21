@@ -54,13 +54,7 @@ function CVBuilder() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <label>
-          Skills:
-          <textarea
-            value={skills}
-            onChange={(e) => setSkills(e.target.value)}
-          />
-        </label>
+      
         <label>
           Education:
           <textarea
@@ -75,20 +69,7 @@ function CVBuilder() {
             onChange={(e) => setExperience(e.target.value)}
           />
         </label>
-        <label>
-          Languages:
-          <textarea
-            value={languages}
-            onChange={(e) => setLanguages(e.target.value)}
-          />
-        </label>
-        <label>
-          Projects:
-          <textarea
-            value={projects}
-            onChange={(e) => setProjects(e.target.value)}
-          />
-        </label>
+      
 
         <label>
           Hobbies:
