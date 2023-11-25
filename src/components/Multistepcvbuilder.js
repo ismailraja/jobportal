@@ -1,63 +1,125 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Option.css";
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-newCorrectIntegrityHash">
 
+</link>
 
-const [workExperiences, setWorkExperiences] = useState([
-    // ... existing work experiences ...
-    {
-      title: 'Tester',
-      company: 'Microsoft',
-      startDate: '2023-01',
-      endDate: 'Present',
-      location: 'Singapore, Singapore',
-      description: 'Tester Application',
-    },
-  ]);
-
-  // ... existing code ...
-
-const [educationHistory, setEducationHistory] = useState([
-    // ... existing education history ...
-    {
-      school: 'SJC',
-      degree: 'Bachelor of Business Administration (BBA)',
-      fieldOfStudy: 'Computer Science',
-      startDate: '2010',
-      endDate: '2013',
-      description: 'BSC',
-    },
-  ]);
-  
-  const [hourlyRate, setHourlyRate] = useState(70);
-const serviceFee = hourlyRate * 0.1;
-const amountReceived = hourlyRate - serviceFee;
-  // ... existing code ...
-function WorkExperienceTile({ title, company, startDate, endDate, location, description }) {
-    return (
-      <div style={{ border: '1px solid black', margin: '10px', padding: '10px' }}>
-        <h2>{title}</h2>
-        <h3>{company}</h3>
-        <p>{startDate} - {endDate}</p>
-        <p>{location}</p>
-        <p>{description}</p>
-      </div>
-    );
-  }
-
-  function EducationTile({ school, degree, fieldOfStudy, startDate, endDate, description }) {
-    return (
-      <div style={{ border: '1px solid black', margin: '10px', padding: '10px' }}>
-        <h2>{school}</h2>
-        <h3>{degree}</h3>
-        <p>{fieldOfStudy}</p>
-        <p>{startDate} - {endDate}</p>
-        <p>{description}</p>
-      </div>
-    );
-  }
 
 function Multistepcvbuilder() {
+
+const [workExperiences, setWorkExperiences] = useState([
+  // ... existing work experiences ...
+  {
+    jobtitle: 'Tester',
+    company: 'Microsoft',
+    startDate: '2023-01',
+    endDate: 'Present',
+    location: 'Singapore, Singapore',
+    description: 'Tester Application',
+  },
+]);
+
+// ... existing code ...
+
+const [educationHistory, setEducationHistory] = useState([
+  // ... existing education history ...
+  {
+    school: 'SJC',
+    degree: 'Bachelor of Business Administration (BBA)',
+    fieldOfStudy: 'Computer Science',
+    startDate: '2010',
+    endDate: '2013',
+    description: 'BSC',
+  },
+]);
+
+const [hourlyRate, setHourlyRate] = useState(70);
+const serviceFee = hourlyRate * 0.1;
+const amountReceived = hourlyRate - serviceFee;
+// ... existing code ...
+function WorkExperienceTile({ title, company, startDate, endDate, location, description }) {
+  return (
+    <div style={{ border: '1px solid black', margin: '10px', padding: '10px' }}>
+      <h2>{title}</h2>
+      <h3>{company}</h3>
+      <p>{startDate} - {endDate}</p>
+      <p>{location}</p>
+      <p>{description}</p>
+    </div>
+  );
+}
+
+function EducationTile({ school, degree, fieldOfStudy, startDate, endDate, description }) {
+  return (
+    <div style={{ border: '1px solid black', margin: '10px', padding: '10px' }}>
+      <h2>{school}</h2>
+      <h3>{degree}</h3>
+      <p>{fieldOfStudy}</p>
+      <p>{startDate} - {endDate}</p>
+      <p>{description}</p>
+    </div>
+  );
+}
+
+// user input data
+const [name, setName] = useState("");
+const [title, setTitle] = useState("");
+const [experience, setExperience] = useState("");
+//const [workExperiences, setWorkExperiences] = useState([]);
+const [education, setEducation] = useState("");
+//const [educationHistory, setEducationHistory] = useState([]);
+const [language, setLanguage] = useState("");
+const [skills, setSkills] = useState([]);
+const [bio, setBio] = useState("");
+const [services, setServices] = useState([]);
+//const [hourlyRate, setHourlyRate] = useState("");
+const [dob, setDob] = useState("");
+const [country, setCountry] = useState("");
+const [address, setAddress] = useState("");
+const [city, setCity] = useState("");
+const [state, setState] = useState("");
+const [zip, setZip] = useState("");
+const [phone, setPhone] = useState("");
+const [photo, setPhoto] = useState("");
+
+
+// Function to handle form submission
+const handleSubmit = (event) => {
+  event.preventDefault();
+
+  // Create a JSON object
+  const userInput = {
+    name: name,
+    title: title,
+    experience: experience,
+    workExperiences: workExperiences,
+    education: education,
+    educationHistory: educationHistory,
+    language: language,
+    skills: skills,
+    bio: bio,
+    services: services,
+    hourlyRate: hourlyRate,
+    dob: dob,
+    country: country,
+    address: address,
+    city: city,
+    state: state,
+    zip: zip,
+    phone: phone,
+    photo: photo
+
+  };
+
+  // Convert the object into a JSON string
+  const jsonInput = JSON.stringify(userInput);
+  console.log(jsonInput);
+
+
+  // Now you can send `jsonInput` to a server or use it as you need
+};
+
   const [step, setStep] = useState(1);
 
   const nextStep = () => {
@@ -67,7 +129,10 @@ function Multistepcvbuilder() {
   const prevStep = () => {
     setStep(step - 1);
   };
-
+  <div>
+    <h1>Multi CV Builder</h1>
+  </div>
+console.log("step:" + step);
   switch (step) {
     case 1:
       return (
@@ -97,7 +162,7 @@ function Multistepcvbuilder() {
           <h1>Step 2: Enter your details</h1>
           <label>
             Name:
-            <input type="text" name="name" />
+            <input type="text" value={name} onChange={e => setName(e.target.value)} />
           </label>
           <button onClick={prevStep}>Previous</button>
           <button onClick={nextStep}>Next</button>
@@ -111,7 +176,7 @@ function Multistepcvbuilder() {
       <p>It’s the very first thing clients see, so make it count. Stand out by describing your expertise in your own words.</p>
       <label>
         Your professional role:
-        <input type="text" name="title" placeholder="Software Engineer | Javascript | iOS" minLength="4" required />
+        <input type="text"  value={title} onChange={e => setTitle(e.target.value)} placeholder="Software Engineer | Javascript | iOS" minLength="4" required />
       </label>
       <button onClick={prevStep}>Previous</button>
       <button onClick={nextStep}>Next</button>
@@ -143,7 +208,7 @@ case 5:
         <h1>Step 5: Add Work Experience</h1>
         <label>
           Title:
-          <input type="text" name="title" placeholder="Ex: Software Engineer" required />
+          <input type="text" name="jobtitle" placeholder="Ex: Software Engineer" required />
         </label>
         <label>
           Company:
@@ -403,6 +468,26 @@ case 14:
 
   case 16:
   return (
+   
+      <form onSubmit={handleSubmit}>
+         <div className="option">
+          <input type="text" value={education} onChange={e => setEducation(e.target.value)} />
+          <input type="text" value={language} onChange={e => setLanguage(e.target.value)} />
+ 
+
+      <h1>Nice work, Fazith!</h1>
+      <p>Your profile’s ready. Congratulations! With thousands to choose from, it’s time to start bidding on roles that are the perfect fit for your skills.</p>
+      <button onClick={prevStep}>Previous</button>
+
+      <button type="submit">Submit</button>
+    </div>
+    </form>
+  );
+  
+
+  case 17:
+
+  return (
     <div className="option">
       <h1>Nice work, Fazith!</h1>
       <p>Your profile’s ready. Congratulations! With thousands to choose from, it’s time to start bidding on roles that are the perfect fit for your skills.</p>
@@ -410,7 +495,6 @@ case 14:
       <button onClick={nextStep}>Submit</button>
     </div>
   );
-  
   // ... existing code ...
   // ... existing code ...
   // ... existing code ...

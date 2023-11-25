@@ -15,6 +15,7 @@ import Dashboardclient from "./components/Dashboardclient";
 import CVBuilder from "./components/CVBuilder";
 
 import "./App.css";
+import Multistepcvbuilder from "./components/Multistepcvbuilder";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/registerfreelancer" element={<Registerfreelancer />} />
         <Route path="/option" element={<Option />} />
         <Route path="/cvbuilder" element={<CVBuilder />} />
+        <Route path="/multistepcvbuilder" element={<Multistepcvbuilder />} />
       </Routes>
     </Router>
   );
